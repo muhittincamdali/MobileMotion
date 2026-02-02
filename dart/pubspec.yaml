@@ -1,0 +1,17 @@
+name: mobile_motion
+description: Physics-based animation engine for Flutter. Spring, gravity, and friction animations with zero keyframe authoring.
+version: 1.0.0
+homepage: https://github.com/muhittincamdali/MobileMotion
+
+environment:
+  sdk: '>=2.19.0 <4.0.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
