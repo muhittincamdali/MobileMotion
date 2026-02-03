@@ -8,33 +8,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Web (CSS/Canvas) backend
-- Fluid simulation effects
+- visionOS navigation support
 
-## [1.0.0] - 2025-01-15
+## [1.0.0] - 2024-01-15
 
 ### Added
-- SpringAnimation with damped harmonic oscillator
-- GravityAnimation with bounce support
-- FrictionAnimation with exponential decay
-- AnimationEngine with DisplayLink integration
-- GestureDrivenAnimation for touch interactions
-- MorphTransition for shape morphing
-- SharedElementTransition for navigation
-- SwiftUI MotionView and modifiers
-- Dart PhysicsSpringAnimation
-- Dart MotionWidget
-- React Native useMotion hook
-- React Native MotionView component
-- Zero allocations during animation ticks
-- Frame-rate independent calculations
-- Automatic rest detection
+- Type-safe navigation with compile-time checks
+- SwiftUI NavigationStack integration
+- Deep linking support with URL parsing
+- Tab bar coordination
+- Modal presentation handling
+- Navigation state persistence
+- Route parameters with type safety
+- Navigation interceptors (guards)
+- Animated transitions
+- Back stack management
+- Child router support (coordinator pattern)
 
-### Changed
-- Optimized physics solver for 120Hz displays
+### Features
+- Zero dependencies
+- Protocol-oriented design
+- Full async/await support
 
-### Fixed
-- Gesture velocity calculation edge cases
-
-[Unreleased]: https://github.com/muhittincamdali/MobileMotion/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/muhittincamdali/MobileMotion/releases/tag/v1.0.0
+[Unreleased]: https://github.com/muhittincamdali/SwiftRouter/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/muhittincamdali/SwiftRouter/releases/tag/v1.0.0

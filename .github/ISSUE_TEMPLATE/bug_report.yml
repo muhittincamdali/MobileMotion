@@ -1,90 +1,107 @@
 name: Bug Report
-description: Report a bug or unexpected behavior
+description: File a bug report to help us improve
 title: "[Bug]: "
 labels: ["bug", "triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a bug! Please fill out the sections below.
-  
-  - type: dropdown
-    id: platform
-    attributes:
-      label: Platform
-      description: Which platform has the issue?
-      options:
-        - Swift/iOS
-        - Swift/macOS
-        - Dart/Flutter
-        - TypeScript/React Native
-    validations:
-      required: true
-  
+        Thanks for taking the time to fill out this bug report!
+
   - type: textarea
     id: description
     attributes:
       label: Bug Description
-      description: A clear and concise description of the bug
-      placeholder: What happened?
+      description: A clear and concise description of what the bug is.
+      placeholder: Tell us what happened
     validations:
       required: true
-  
+
   - type: textarea
     id: reproduction
     attributes:
       label: Steps to Reproduce
       description: Steps to reproduce the behavior
       placeholder: |
-        1. Create animation with...
-        2. Animate to...
-        3. See error
+        1. Define route with...
+        2. Navigate to...
+        3. See unexpected behavior
     validations:
       required: true
-  
+
   - type: textarea
     id: expected
     attributes:
       label: Expected Behavior
-      description: What did you expect to happen?
-      placeholder: What should have happened?
+      description: A clear and concise description of what you expected to happen.
     validations:
       required: true
-  
-  - type: dropdown
-    id: animation
-    attributes:
-      label: Animation Type
-      description: Which animation type has the issue?
-      options:
-        - Spring
-        - Gravity
-        - Friction
-        - Gesture-driven
-        - Morph/Transition
-        - Other
-    validations:
-      required: true
-  
+
   - type: textarea
-    id: environment
+    id: code
     attributes:
-      label: Environment
-      description: Please provide environment details
-      value: |
-        - OS: [e.g., iOS 17.2]
-        - Device: [e.g., iPhone 15 Pro]
-        - Frame Rate: [e.g., 60Hz / 120Hz]
-        - Package Version: [e.g., 1.0.0]
+      label: Code Sample
+      description: If applicable, add a minimal code sample to reproduce the issue
+      render: swift
+
+  - type: dropdown
+    id: navigation-type
+    attributes:
+      label: Navigation Type
+      multiple: true
+      options:
+        - Push Navigation
+        - Modal Presentation
+        - Tab Navigation
+        - Deep Link
+        - Sheet/Popover
     validations:
       required: true
-  
+
+  - type: dropdown
+    id: swift-version
+    attributes:
+      label: Swift Version
+      options:
+        - "5.9"
+        - "5.10"
+        - "6.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      multiple: true
+      options:
+        - iOS
+        - macOS
+        - tvOS
+        - watchOS
+        - visionOS
+    validations:
+      required: true
+
+  - type: input
+    id: os-version
+    attributes:
+      label: OS Version
+      placeholder: "e.g., iOS 17.0, macOS 14.0"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Log Output
+      description: Please copy and paste any relevant log output
+      render: shell
+
   - type: checkboxes
-    id: checklist
+    id: terms
     attributes:
       label: Checklist
       options:
-        - label: I have searched existing issues to avoid duplicates
-          required: true
-        - label: I have tested with the latest version
+        - label: I have searched existing issues to ensure this bug hasn't been reported
           required: true
