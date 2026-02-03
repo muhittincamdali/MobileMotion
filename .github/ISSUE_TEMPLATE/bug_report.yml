@@ -1,0 +1,90 @@
+name: Bug Report
+description: Report a bug or unexpected behavior
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please fill out the sections below.
+  
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Which platform has the issue?
+      options:
+        - Swift/iOS
+        - Swift/macOS
+        - Dart/Flutter
+        - TypeScript/React Native
+    validations:
+      required: true
+  
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the bug
+      placeholder: What happened?
+    validations:
+      required: true
+  
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Create animation with...
+        2. Animate to...
+        3. See error
+    validations:
+      required: true
+  
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: What should have happened?
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: animation
+    attributes:
+      label: Animation Type
+      description: Which animation type has the issue?
+      options:
+        - Spring
+        - Gravity
+        - Friction
+        - Gesture-driven
+        - Morph/Transition
+        - Other
+    validations:
+      required: true
+  
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Please provide environment details
+      value: |
+        - OS: [e.g., iOS 17.2]
+        - Device: [e.g., iPhone 15 Pro]
+        - Frame Rate: [e.g., 60Hz / 120Hz]
+        - Package Version: [e.g., 1.0.0]
+    validations:
+      required: true
+  
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I have tested with the latest version
+          required: true
