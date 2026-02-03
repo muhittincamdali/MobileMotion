@@ -1,0 +1,95 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release-swift:
+    name: Build Swift Package
+    runs-on: macos-14
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.2'
+      
+      - name: Build
+        run: |
+          cd swift
+          swift build -c release
+      
+      - name: Test
+        run: |
+          cd swift
+          swift test
+
+  release-dart:
+    name: Build Dart Package
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16'
+          channel: 'stable'
+      
+      - name: Analyze and Test
+        run: |
+          cd dart
+          flutter pub get
+          dart analyze
+          flutter test
+
+  create-release:
+    name: Create GitHub Release
+    needs: [release-swift, release-dart]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Generate Release Notes
+        id: notes
+        run: |
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --pretty=format:"- %s" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          body: |
+            ## What's Changed
+            ${{ steps.notes.outputs.notes }}
+            
+            ## Installation
+            
+            ### Swift Package Manager
+            ```swift
+            .package(url: "https://github.com/muhittincamdali/MobileMotion.git", from: "${{ github.ref_name }}")
+            ```
+            
+            ### Flutter
+            ```yaml
+            dependencies:
+              mobile_motion:
+                git:
+                  url: https://github.com/muhittincamdali/MobileMotion.git
+                  path: dart
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
