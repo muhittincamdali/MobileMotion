@@ -45,6 +45,25 @@ MobileMotion.spring(
 | ⚡ **60fps** | GPU-accelerated |
 | 📱 **Cross-Platform** | iOS, Flutter, React Native |
 
+
+## Installation
+
+### Swift Package Manager
+
+Add to your `Package.swift`:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/muhittincamdali/MobileMotion.git", from: "1.0.0")
+]
+```
+
+### CocoaPods
+
+```ruby
+pod 'MobileMotion', '~> 1.0'
+```
+
 ## Quick Start
 
 ### iOS (Swift)
