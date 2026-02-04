@@ -1,47 +1,159 @@
-<div align="center">
+<p align="center">
+  <img src="Assets/logo.png" alt="MobileMotion" width="200"/>
+</p>
 
-# 🎬 MobileMotion
+<h1 align="center">MobileMotion</h1>
 
-**Cross-platform physics-based animation engine for iOS, Flutter & React Native**
+<p align="center">
+  <strong>🎬 Cross-platform physics-based animation engine for iOS, Flutter & React Native</strong>
+</p>
 
-[![Swift](https://img.shields.io/badge/Swift-5.9+-F05138?style=for-the-badge&logo=swift&logoColor=white)](https://swift.org)
-[![Dart](https://img.shields.io/badge/Dart-3.0+-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-
-</div>
-
----
-
-## ✨ Features
-
-- 🌊 **Spring Physics** — Natural bouncy motion
-- ⚡ **60fps** — Smooth performance
-- 🎯 **Gesture Driven** — Drag, fling, snap
-- 📦 **Cross-Platform** — Same API everywhere
-- 🎨 **Customizable** — Tension, friction, mass
+<p align="center">
+  <img src="https://img.shields.io/badge/Swift-6.0-orange.svg" alt="Swift"/>
+  <img src="https://img.shields.io/badge/Flutter-3.24-blue.svg" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"/>
+</p>
 
 ---
 
-## 🚀 Quick Start
+## Why MobileMotion?
 
-### Swift
+Standard animations feel robotic. Physics-based animations feel natural. **MobileMotion** provides spring physics, gravity, friction, and collision detection across all mobile platforms.
+
+```swift
+// iOS
+view.animate(.spring(damping: 0.7, stiffness: 300))
+    .to(\.center, CGPoint(x: 200, y: 200))
+```
+
+```dart
+// Flutter
+MobileMotion.spring(
+  damping: 0.7,
+  stiffness: 300,
+).animate(controller);
+```
+
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| 🎯 **Spring Physics** | Damping, stiffness, mass |
+| 🌍 **Gravity** | Realistic falling animations |
+| 🔄 **Momentum** | Velocity-based animations |
+| 💥 **Collisions** | Bounce off boundaries |
+| ⚡ **60fps** | GPU-accelerated |
+| 📱 **Cross-Platform** | iOS, Flutter, React Native |
+
+## Quick Start
+
+### iOS (Swift)
+
 ```swift
 import MobileMotion
 
-view.animate(to: targetPoint)
-    .spring(tension: 200, friction: 20)
+// Spring animation
+Motion.spring(view)
+    .damping(0.7)
+    .stiffness(300)
+    .animate(to: targetPosition)
+
+// Gravity
+Motion.gravity(view)
+    .acceleration(9.8)
+    .bounce(0.6)
     .start()
+
+// Drag with momentum
+view.enableDrag { gesture in
+    Motion.momentum(view)
+        .velocity(gesture.velocity)
+        .friction(0.95)
+        .start()
+}
 ```
 
 ### Flutter
+
 ```dart
 import 'package:mobile_motion/mobile_motion.dart';
 
-controller.animate(to: 1.0, spring: Spring(tension: 200));
+// Spring animation
+SpringAnimation(
+  damping: 0.7,
+  stiffness: 300,
+  child: MyWidget(),
+).animateTo(Offset(200, 200));
+
+// Physics-based scroll
+PhysicsScrollView(
+  physics: BouncingScrollPhysics(
+    friction: 0.95,
+    bounce: 0.3,
+  ),
+  child: content,
+);
 ```
 
----
+## Physics Parameters
 
-## 📄 License
+| Parameter | Description | Range |
+|-----------|-------------|-------|
+| `damping` | Oscillation decay | 0.0 - 1.0 |
+| `stiffness` | Spring strength | 100 - 1000 |
+| `mass` | Object weight | 0.1 - 10.0 |
+| `friction` | Movement decay | 0.9 - 1.0 |
+| `bounce` | Collision elasticity | 0.0 - 1.0 |
 
-MIT • [@muhittincamdali](https://github.com/muhittincamdali)
+## Presets
+
+```swift
+Motion.preset(.bouncy)  // High bounce
+Motion.preset(.smooth)  // No bounce
+Motion.preset(.snappy)  // Quick settle
+Motion.preset(.gentle)  // Slow, soft
+```
+
+## Chained Animations
+
+```swift
+Motion.sequence([
+    .spring(to: point1),
+    .wait(0.5),
+    .spring(to: point2),
+    .gravity(to: floor)
+])
+```
+
+## Interactive Gestures
+
+```swift
+view.enablePhysicsDrag { state in
+    switch state {
+    case .began:
+        Motion.pause(view)
+    case .changed(let translation):
+        view.center += translation
+    case .ended(let velocity):
+        Motion.momentum(view)
+            .velocity(velocity)
+            .boundaries(screen.bounds)
+            .start()
+    }
+}
+```
+
+## Performance
+
+- 60fps on all devices
+- GPU-accelerated
+- Minimal CPU overhead
+- Battery optimized
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+MIT License
