@@ -2,33 +2,35 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [2.0.0] - 2025-07-22
 
 ### Added
-- visionOS navigation support
+- **Sensor Wrappers**: `MotionManager`, `Accelerometer`, `Gyroscope`, `Magnetometer`, `DeviceMotionSensor` with buffering and statistics
+- **Activity Recognition**: `ActivityRecognizer` with live updates, historical queries, and step counting
+- **Gesture Detection**: `GestureDetector` supporting shake, tilt, face orientation, twist, impact, and pickup gestures
+- **SwiftUI Bindings**: Observable wrappers (`AccelerometerObservable`, `GyroscopeObservable`, etc.) and view modifiers
+- **Configurable thresholds**: `GestureDetectorConfig` with default and sensitive presets
+- **Data types**: `AccelerationData`, `RotationRateData`, `MagneticFieldData`, `DeviceMotionData` with Sendable conformance
 
-## [1.0.0] - 2024-01-15
+### Changed
+- **Package.swift**: Fixed source path resolution — all sources now consolidated under `Sources/MobileMotion/`
+- **Architecture**: Reorganized into Sensors, Activity, Gestures, Core, Physics, SwiftUI, Particles, and Transitions modules
+- **Access control**: Animation properties changed from `private(set)` to `internal(set)` for proper engine integration
+
+### Fixed
+- Package.swift pointing to wrong source directory
+- ConfettiSystem duplicate property compilation error
+- SpringAnimation/GravityAnimation/FrictionAnimation access control preventing AnimationEngine from setting state
+
+## [1.0.0] - 2025-01-15
 
 ### Added
-- Type-safe navigation with compile-time checks
-- SwiftUI NavigationStack integration
-- Deep linking support with URL parsing
-- Tab bar coordination
-- Modal presentation handling
-- Navigation state persistence
-- Route parameters with type safety
-- Navigation interceptors (guards)
-- Animated transitions
-- Back stack management
-- Child router support (coordinator pattern)
-
-### Features
-- Zero dependencies
-- Protocol-oriented design
-- Full async/await support
-
-[Unreleased]: https://github.com/muhittincamdali/SwiftRouter/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/muhittincamdali/SwiftRouter/releases/tag/v1.0.0
+- Spring, gravity, and friction animation primitives
+- Physics simulation with collision detection
+- Gesture-driven animations with snap points
+- Particle effects (confetti, snow)
+- View transitions (morph, page curl, shared element)
+- SwiftUI modifiers for spring animations
