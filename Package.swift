@@ -5,8 +5,7 @@ import PackageDescription
 let package = Package(
     name: "MobileMotion",
     platforms: [
-        .iOS(.v15),
-        .watchOS(.v8)
+        .iOS(.v15)
     ],
     products: [
         .library(

@@ -10,7 +10,6 @@
   </a>
   <img src="https://img.shields.io/badge/Swift-5.9+-orange.svg" alt="Swift 5.9+"/>
   <img src="https://img.shields.io/badge/iOS-15.0+-blue.svg" alt="iOS 15.0+"/>
-  <img src="https://img.shields.io/badge/watchOS-8.0+-green.svg" alt="watchOS 8.0+"/>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="License"/>
   </a>
@@ -332,7 +331,7 @@ let custom = GestureDetector(config: GestureDetectorConfig(
 
 ## Requirements
 
-- iOS 15.0+ / watchOS 8.0+
+- iOS 15.0+
 - Swift 5.9+
 - Xcode 15+
 
