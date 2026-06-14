@@ -15,6 +15,10 @@
 
 <h1 align="center">MobileMotion</h1>
 
+## 🚀 Killer Feature: Physics-Based Fluid Gestures
+Achieve the exact spatial feel of native Apple apps. The `.fluidGesture()` modifier tracks user touch velocity and translates it into a calibrated, physics-based spring decay animation automatically.
+
+
 <p align="center">
   <strong>📱 Unified motion sensors, gesture detection & physics animations for iOS</strong>
 </p>
